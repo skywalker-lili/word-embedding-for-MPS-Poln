@@ -249,8 +249,12 @@ def clean_forDoc2Vec(s,
     # All to lower cases
     s = s.lower()
     
-    # Replace connectors and punctuations into space
+    # Replace connectors and punctuations with space
     pattern = "[\.\,\:\-\?\!\_\'\/]"
+    s = re.sub(pattern, " ", s)
+
+    # Replace "&lt" and "&gt" with space
+    pattern = "((&lt)|(&gt))"
     s = re.sub(pattern, " ", s)
     
     # Remove brackets <>, [], () and contents in them

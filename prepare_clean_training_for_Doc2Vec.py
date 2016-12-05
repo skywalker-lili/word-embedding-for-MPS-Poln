@@ -62,8 +62,14 @@ for item in raw:
     for i, field in enumerate(item):
         item[i] = field.lower()
 
-# Replace connectors and punctuations into space
+# Replace connectors and punctuations with space
 pattern = "[\.\,\:\-\?\!\_\'\/]"
+for item in raw:
+    for i, field in enumerate(item):
+        item[i] = re.sub(pattern, " ", field)
+
+# Replace &lt and &gt with space
+pattern = "((&lt)|(&gt))"
 for item in raw:
     for i, field in enumerate(item):
         item[i] = re.sub(pattern, " ", field)
